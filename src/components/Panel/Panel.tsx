@@ -8,12 +8,13 @@ const [modalsState, setModalsState] = useState({addExpenseModal:false, showExpen
   const totalExpenses: number = expenses.reduce((total: number, next) => {
    return total + (+next.value)
   }, 0);
-  let progress = totalExpenses / budget;
+
+  let progress = totalExpenses / budget *100;
   let bgcolor = "blue";
-  let panelStyle = progress < 1 ? "panel--main" : "panel--main danger";
-  if (progress > 0.8) {
+  let panelStyle = progress < 100 ? "panel--main" : "panel--main danger";
+  if (progress > 80) {
     bgcolor = "red";
-  } else if (progress >= 0.4) {
+  } else if (progress >= 40) {
     bgcolor = "green";
   }
 
@@ -36,7 +37,7 @@ const handleViewExpenseModal = () => {
       </div>
       <ProgressBar
         bgcolor={bgcolor}
-        progress={Math.round(progress * 100)}
+        progress={Math.round(progress)}
         height={30}
       />
       <div className="panel--btns">

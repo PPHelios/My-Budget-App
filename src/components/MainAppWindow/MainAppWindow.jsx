@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { MainBar } from "../MainBar/MainBar";
 import { PanelsWindow } from "../PanelsWindow/PanelsWindow";
+import { ChartsPanel } from "../ChartsPanel/ChartsPanel";
 export const MainAppWindow = () => {
   const panelsRef = useRef(null);
   const newspaperSpinning = [
@@ -27,6 +28,7 @@ export const MainAppWindow = () => {
   return (
     <>
       <MainBar scrollToNewPanel={scrollToNewPanel} />
+      <ChartsPanel />
       <PanelsWindow ref={panelsRef} />
     </>
   );

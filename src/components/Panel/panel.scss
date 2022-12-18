@@ -2,11 +2,12 @@
   margin: 2rem;
   padding: 1.5rem;
   border: 1px solid $color-primary;
-  box-shadow: 2px 2px 5px $color-primary;
+
   &.danger {
     background-color: $color-secondary-light;
   }
   &:hover {
+    box-shadow: 2px 2px 5px $color-primary-light;
     transform: scale(1.05);
     transition: 0.5s;
   }

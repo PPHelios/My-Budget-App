@@ -1,0 +1,19 @@
+.chartsPanel--body {
+  margin-inline: 2rem;
+  padding: 1.5rem;
+  background-color: $color-gray-light;
+  box-shadow: 1px 2px 4px $color-primary-light;
+  .chartsPanel--totals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+  }
+  .chartsPanel--progressbar {
+    margin-top: 1rem;
+    display: grid;
+    margin-inline: auto;
+
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+}

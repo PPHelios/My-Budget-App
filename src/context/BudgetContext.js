@@ -11,6 +11,15 @@ const initialState = [
     ],
     budget: 100,
   },
+  {
+    id: 1,
+    name: "Food",
+    expenses: [
+      { id: 0, name: "mac", value: 80, description: "buy food" },
+      { id: 1, name: "buffalo", value: 40, description: "buy food" },
+    ],
+    budget: 200,
+  },
 ];
 export const BudgetContext = createContext(null);
 
@@ -33,7 +42,31 @@ export const BudgetContextProvider = ({ children }) => {
     return budget;
   };
 
-  const value = { budgets, dispatch, getBudgetNames, findBudgetById };
+  const totalBudgets = () =>
+    budgets.reduce((total, next) => total + parseInt(next.budget), 0);
+
+  const totalExpenses = () => {
+    let totale = 0;
+    budgets.map((budget) => {
+      const btotal = budget.expenses.reduce((total, next) => {
+        console.log(total, next.value);
+        return total + parseInt(next.value);
+      }, 0);
+      console.log(btotal);
+      totale += btotal;
+    });
+
+    return totale;
+  };
+
+  const value = {
+    budgets,
+    dispatch,
+    getBudgetNames,
+    findBudgetById,
+    totalBudgets,
+    totalExpenses,
+  };
 
   return (
     <BudgetContext.Provider value={value}>{children}</BudgetContext.Provider>
