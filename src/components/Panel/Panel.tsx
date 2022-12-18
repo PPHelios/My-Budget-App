@@ -51,7 +51,7 @@ const handleViewExpenseModal = () => {
     <>
       <PanelMain />
       
-      {modalsState.addExpenseModal && <AddExpenseModal ModalName={name} id={id} handleClose={handleAddExpenseModal} />}
+      {modalsState.addExpenseModal && <AddExpenseModal id={id} handleClose={handleAddExpenseModal} />}
       
       {modalsState.showExpensesModal && <ViewExpensesModal ModalName={name} id={id} handleClose={handleViewExpenseModal}/>}
     </>
