@@ -1,0 +1,27 @@
+.btn {
+  font-size: 1.2rem;
+  padding: 0.7rem 1rem;
+  margin: 0.5rem;
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  color: $color-white;
+  box-shadow: 1px 1px 2px $color-primary;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-white;
+    color: $color-primary;
+  }
+}
+.inverted {
+  background-color: $color-white;
+  color: $color-primary;
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+.muted {
+  color: $color-gray;
+  background-color: $color-white;
+  border-color: $color-gray;
+}

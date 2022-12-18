@@ -1,0 +1,32 @@
+.panel--main {
+  margin: 2rem;
+  padding: 1.5rem;
+  border: 1px solid $color-primary;
+  box-shadow: 2px 2px 5px $color-primary;
+  &.danger {
+    background-color: $color-secondary-light;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.5s;
+  }
+  .panel--head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h4 {
+      font-size: 1.6rem;
+    }
+    .panel--expenses {
+      font-size: 1.2rem;
+    }
+    .panel--budget {
+      font-size: 1.4rem;
+      color: $color-gray;
+    }
+  }
+  .panel--btns {
+    width: fit-content;
+    margin-left: auto;
+  }
+}

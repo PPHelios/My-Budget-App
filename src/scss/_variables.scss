@@ -1,0 +1,30 @@
+$color-primary: rgb(41, 126, 172);
+$color-secondary: rgb(255, 0, 0);
+$color-secondary-light: rgba(255, 0, 0, 0.4);
+$color-white: rgb(251, 251, 251);
+$color-gray: rgb(130, 127, 127);
+$color-black: black;
+$color-gray-light: rgb(54, 150, 190);
+$color-1: teal;
+$color-2: green;
+$color-3: rgb(255, 0, 0);
+$color-4: orange;
+$color-5: violet;
+
+$padding: 0.6rem;
+$border-radius: 10px;
+$container-width: 88%;
+$container-width-tablet: 90%;
+$container-width-phone: 94%;
+$nav-height: 10vh;
+$nav-height-tablet: 8vh;
+$nav-height-phone: 7vh;
+
+$transition: all 400ms ease;
+
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
