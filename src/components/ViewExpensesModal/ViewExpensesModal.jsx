@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useBudgetsContext } from "../../context/BudgetContext";
+import { ExpensesChart } from "../charts/ExpensesChart";
 export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
   const { dispatch, findBudgetById } = useBudgetsContext();
 
@@ -31,14 +32,21 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
     const expenses = findBudgetById(id).expenses;
     return (
       <ul>
-        {expenses.map((x) => (
-          <li key={x.id}>
-            <span> {x.name}:</span>
-            <span> {x.value}$ </span>
-            <span> {x.description}</span>
-            <button onClick={() => handleDeleteExpense(x.id)}> &#10005;</button>
-          </li>
-        ))}
+        {expenses.map((x) => {
+          const date = new Date(x.date).toISOString("dd/mm/yyyy");
+          return (
+            <li key={x.id}>
+              <span> {x.name}:</span>
+              <span> {x.value}$ </span>
+              <span> {date}:</span>
+              <span> {x.description}</span>
+              <button onClick={() => handleDeleteExpense(x.id)}>
+                {" "}
+                &#10005;
+              </button>
+            </li>
+          );
+        })}
       </ul>
     );
   };
@@ -65,7 +73,8 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
           </div>
         </div>
         <b>Your Expenses :</b>
-        {<ExpensesList />}
+        <ExpensesList />
+        <ExpensesChart id={id} />
       </div>
     </div>
   );

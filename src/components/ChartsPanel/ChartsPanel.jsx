@@ -6,7 +6,6 @@ export const ChartsPanel = () => {
   const total = totalBudgets();
   const expenses = totalExpenses();
   const progress = Math.floor((expenses / total) * 100);
-  console.log(progress);
   let bgcolor = "blue";
   if (progress > 80) {
     bgcolor = "red";

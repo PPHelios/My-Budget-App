@@ -4,7 +4,7 @@ import { Panel } from "../Panel/Panel.tsx";
 
 export const PanelsWindow = forwardRef(({ ...props }, ref) => {
   const { budgets } = useBudgetsContext();
-
+  console.log(budgets);
   const budgetPanels = budgets.map((b) => (
     <Panel
       key={b.id}
