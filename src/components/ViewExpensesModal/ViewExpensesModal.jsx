@@ -33,7 +33,7 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
     return (
       <ul>
         {expenses.map((x) => {
-          const date = new Date(x.date).toISOString("dd/mm/yyyy");
+          const date = new Date(x.date).toISOString("datetime-local");
           return (
             <li key={x.id}>
               <span> {x.name}:</span>

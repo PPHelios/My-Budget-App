@@ -85,18 +85,18 @@ export const BudgetContextProvider = ({ children }) => {
   const expensesChartData = (budgetId, startDate) => {
     const f = findBudgetById(budgetId);
     const h = f.expenses.filter((e) => {
-      const timeStampStartDate = new Date(startDate).getTime();
+      // const timeStampStartDate = new Date(startDate).getTime();
       // console.log(e.date);
       // console.log(new Date(startDate).getTime());
       // console.log(e.date > timeStampStartDate);
-      return e.date > timeStampStartDate;
+      return e.date > startDate;
     });
-    console.log("h " + h);
+    //console.log("h " + h);
     const z = h.map((expense) => {
       const date = new Date(expense.date).getDate();
       return { date, value: expense.value };
     });
-    console.log(z);
+    //console.log(z);
     return z;
   };
 

@@ -1,14 +1,25 @@
 import { useState } from "react";
 import { useBudgetsContext } from "../../context/BudgetContext";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from "victory";
+import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
 export const ExpensesChart = ({ id }) => {
-  const [date, setDate] = useState(0);
+  const k = Date.now() - 2.592e9;
+  const [startDate, setStartDate] = useState(k);
+  //   console.log(startDate);
+  //   const dateFormat = new Date(startDate);
+
+  //   const initialState =
+  //     dateFormat.getFullYear() +
+  //     "-" +
+  //     (dateFormat.getMonth() + 1) +
+  //     "-" +
+  //     dateFormat.getDate();
+  //   console.log(initialState);
   //console.log(typeof new Date(date).getTime());
   const { expensesChartData } = useBudgetsContext();
-  const data = expensesChartData(id, date);
+  const data = expensesChartData(id, startDate);
   console.log(data);
   const handleStartDateChange = (e) => {
-    setDate(e.target.value);
+    setStartDate(e.target.valueAsNumber);
   };
   return (
     <>
