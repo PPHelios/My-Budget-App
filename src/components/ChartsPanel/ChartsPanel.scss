@@ -3,11 +3,23 @@
   padding: 1.5rem;
   background-color: $color-gray-light;
   box-shadow: 1px 2px 4px $color-primary-light;
-  .chartsPanel--totals {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
+  .chartsPanel--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .chartsPanel--total,
+    .chartsPanel--expenses {
+      background-color: red;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      h2 {
+        font-size: 1rem;
+      }
+    }
   }
+
   .chartsPanel--progressbar {
     margin-top: 1rem;
     display: grid;

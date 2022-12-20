@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useBudgetsContext } from "../../context/BudgetContext";
-import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
+import { useBudgetsContext } from "../../src/context/BudgetContext";
+
 export const ExpensesChart = ({ id }) => {
   const k = Date.now() - 2.592e9;
   const [startDate, setStartDate] = useState(k);
