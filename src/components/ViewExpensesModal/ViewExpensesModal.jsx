@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useBudgetsContext } from "../../context/BudgetContext";
-import { ExpensesChart } from "../charts/ExpensesChart";
+//import { ExpensesChart } from "../charts/ExpensesChart";
 export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
   const { dispatch, findBudgetById } = useBudgetsContext();
 
@@ -74,7 +74,7 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
         </div>
         <b>Your Expenses :</b>
         <ExpensesList />
-        <ExpensesChart id={id} />
+        {/* <ExpensesChart id={id} /> */}
       </div>
     </div>
   );
