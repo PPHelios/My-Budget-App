@@ -1,4 +1,3 @@
-import { BudgetsChart } from "../../charts/BudgetsChart";
 import { useBudgetsContext } from "../../context/BudgetContext";
 import { TotalBudgetChart } from "../charts/TotalBudgetChart";
 import { TotalExpensesChart } from "../charts/TotalExpensesChart";
