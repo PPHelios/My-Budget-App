@@ -71,17 +71,24 @@ export const BudgetContextProvider = ({ children }) => {
     budgets.reduce((total, next) => total + parseInt(next.budget), 0);
 
   const totalExpenses = () => {
-    let totale = 0;
-    budgets.map((budget) => {
-      const btotal = budget.expenses.reduce((total, next) => {
-        return total + parseInt(next.value);
-      }, 0);
-      totale += btotal;
-    });
-
-    return totale;
+    return budgets
+      .map((b) => b.expenses.reduce((total, next) => total + next.value, 0))
+      .reduce((total, next) => total + +next, 0);
   };
-
+  const totalBudgetChartData = () =>
+    budgets.reduce((total, next) => {
+      total.push({ id: next.name, value: next.budget });
+      return total;
+    }, []);
+  const totalExpensesChartData = () => {
+    return budgets.map((budget) => {
+      const totalExpenses = budget.expenses.reduce(
+        (total, next) => total + next.value,
+        0
+      );
+      return { id: budget.name, value: totalExpenses };
+    });
+  };
   const expensesChartData = (budgetId, startDate) => {
     const f = findBudgetById(budgetId);
     const h = f.expenses.filter((e) => {
@@ -108,6 +115,8 @@ export const BudgetContextProvider = ({ children }) => {
     totalBudgets,
     totalExpenses,
     expensesChartData,
+    totalBudgetChartData,
+    totalExpensesChartData,
   };
 
   return (

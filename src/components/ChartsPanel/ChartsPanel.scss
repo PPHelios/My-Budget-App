@@ -4,9 +4,22 @@
   background-color: $color-gray-light;
   box-shadow: 1px 2px 4px $color-primary-light;
   .chartsPanel--totals {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    gap: 1rem;
+    min-width: 300px;
+    text-align: center;
+    .chartsPanel--totals-budgets {
+      max-height: 50vh;
+      width: 50%;
+      background-color: burlywood;
+    }
+    .chartsPanel--totals-expenses {
+      height: 50vh;
+      width: 50%;
+      background-color: burlywood;
+    }
   }
   .chartsPanel--progressbar {
     margin-top: 1rem;
