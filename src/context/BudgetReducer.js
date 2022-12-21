@@ -17,7 +17,7 @@ export const BudgetReducer = (budgets, action) => {
       const { id, name, value, description } = action;
       const updatedBudget = budgets.map((b) => {
         if (b.id === id) {
-          const date = Date.now();
+          const date = new Date();
           console.log(date);
           return {
             ...b,

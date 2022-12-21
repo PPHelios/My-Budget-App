@@ -5,6 +5,7 @@
   background: rgba($color: #ffffff, $alpha: 0.4);
   top: 15vh;
   left: 0;
+  z-index: 100;
   .addExpenseModal--content {
     margin: auto;
     width: 70vw;

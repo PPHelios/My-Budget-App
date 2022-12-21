@@ -41,7 +41,7 @@ const data = [
 export const TotalBudgetChart = () => {
   const { totalBudgetChartData } = useBudgetsContext();
   const budgets = totalBudgetChartData();
-  console.log(budgets);
+
   return (
     <ResponsivePie
       data={budgets}

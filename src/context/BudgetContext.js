@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
+import { isBefore, isAfter, endOfMonth, parseISO } from "date-fns";
 import { BudgetReducer } from "./BudgetReducer";
 const date = Date.now();
 const initialState = [
@@ -11,14 +12,14 @@ const initialState = [
         name: "Games",
         value: 60,
         description: "buy games",
-        date: 1171413833724,
+        date: "2022-12-1T18:50:14.851Z",
       },
       {
         id: 1,
         name: "Toys",
         value: 10,
         description: "buy toys",
-        date: 1671453833724,
+        date: "2022-11-21T18:50:14.851Z",
       },
     ],
     budget: 100,
@@ -33,17 +34,31 @@ const initialState = [
         name: "mac",
         value: 80,
         description: "buy food",
-        date: 1671113833724,
+        date: "2022-12-1T18:50:14.851Z",
       },
       {
         id: 1,
         name: "buffalo",
         value: 40,
         description: "buy food",
-        date: 1671153833724,
+        date: "2022-12-15T18:50:14.851Z",
+      },
+      {
+        id: 2,
+        name: "pizza",
+        value: 90,
+        description: "buy food",
+        date: "2022-10-5T18:50:14.851Z",
+      },
+      {
+        id: 3,
+        name: "waffle",
+        value: 60,
+        description: "buy food",
+        date: "2022-11-15T18:50:14.851Z",
       },
     ],
-    budget: 200,
+    budget: 400,
   },
 ];
 export const BudgetContext = createContext(null);
@@ -91,19 +106,23 @@ export const BudgetContextProvider = ({ children }) => {
   };
   const expensesChartData = (budgetId, startDate) => {
     const f = findBudgetById(budgetId);
+    const ss = parseISO(startDate);
+
     const h = f.expenses.filter((e) => {
       // const timeStampStartDate = new Date(startDate).getTime();
-      // console.log(e.date);
+      const vv = new Date(e.date);
+      console.log(e.date);
+      console.log(ss);
       // console.log(new Date(startDate).getTime());
       // console.log(e.date > timeStampStartDate);
-      return e.date > startDate;
+      return isAfter(e.date, ss) && isBefore(e.date, endOfMonth(ss));
     });
-    //console.log("h " + h);
+    console.log("h " + h);
     const z = h.map((expense) => {
       const date = new Date(expense.date).getDate();
-      return { date, value: expense.value };
+      return { id: date, value: expense.value };
     });
-    //console.log(z);
+    console.log("z" + z);
     return z;
   };
 

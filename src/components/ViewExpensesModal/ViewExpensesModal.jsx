@@ -33,12 +33,12 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
     return (
       <ul>
         {expenses.map((x) => {
-          const date = new Date(x.date).toISOString("datetime-local");
+          ("datetime-local");
           return (
             <li key={x.id}>
               <span> {x.name}:</span>
               <span> {x.value}$ </span>
-              <span> {date}:</span>
+              {/* <span> {x.date}:</span> */}
               <span> {x.description}</span>
               <button onClick={() => handleDeleteExpense(x.id)}>
                 {" "}
