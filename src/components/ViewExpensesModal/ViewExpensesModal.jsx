@@ -1,6 +1,7 @@
 import { useEffect, useCallback } from "react";
 import { useBudgetsContext } from "../../context/BudgetContext";
 import { ExpensesChart } from "../charts/ExpensesChart";
+import { TotalBudgetChart } from "../charts/TotalBudgetChart";
 export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
   const { dispatch, findBudgetById } = useBudgetsContext();
 
@@ -36,9 +37,9 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
           ("datetime-local");
           return (
             <li key={x.id}>
-              <span> {x.name}:</span>
+              <span> {x.name}</span>
               <span> {x.value}$ </span>
-              {/* <span> {x.date}:</span> */}
+              <span> {x.date}</span>
               <span> {x.description}</span>
               <button onClick={() => handleDeleteExpense(x.id)}>
                 {" "}
@@ -74,7 +75,7 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
         </div>
         <b>Your Expenses :</b>
         <ExpensesList />
-        <ExpensesChart id={id} />
+        <ExpensesChart id={id}/>
       </div>
     </div>
   );

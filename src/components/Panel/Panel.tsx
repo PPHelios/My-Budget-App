@@ -31,8 +31,8 @@ const handleViewExpenseModal = () => {
       <div className="panel--head">
         <h4>{name}</h4>
         <div>
-          <span className="panel--expenses">{totalExpenses}</span>/
-          <span className="panel--budget">{budget}</span>
+          <span className="panel--expenses">{+totalExpenses}</span>/
+          <span className="panel--budget">{+budget}</span>
         </div>
       </div>
       <ProgressBar

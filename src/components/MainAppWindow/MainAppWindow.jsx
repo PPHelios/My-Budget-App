@@ -14,7 +14,6 @@ export const MainAppWindow = () => {
     iterations: 1,
   };
   const scrollToNewPanel = () => {
-    console.log("click");
     panelsRef.current?.lastElementChild?.scrollIntoView({
       behavior: "smooth",
       block: "center",
