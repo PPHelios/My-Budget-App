@@ -2,9 +2,8 @@ import { forwardRef } from "react";
 import { useBudgetsContext } from "../../context/BudgetContext";
 import { Panel } from "../Panel/Panel.tsx";
 
-export const PanelsWindow = forwardRef(({ ...props }, ref) => {
+export const PanelsWindow = forwardRef((props, ref) => {
   const { budgets } = useBudgetsContext();
-
   const budgetPanels = budgets.map((b) => (
     <Panel
       key={b.id}

@@ -10,6 +10,7 @@ export const ProgressBar = ({ bgcolor, progress, height }) => {
   const Childdiv = {
     height: "100%",
     width: `${progress}%`,
+    maxWidth: "100%",
     backgroundColor: bgcolor,
     borderRadius: 40,
     textAlign: "right",

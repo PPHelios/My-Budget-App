@@ -62,6 +62,7 @@ export const AddBudgetModal = ({ handleClose, scrollToNewPanel }) => {
             ref={budgetValueRef}
             placeholder="Enter Your Budget..."
             min={0}
+            max={1e7}
             required
           />
           <button className="btn inverted">Add</button>

@@ -8,12 +8,14 @@ const [modalsState, setModalsState] = useState({addExpenseModal:false, showExpen
   const totalExpenses: number = expenses.reduce((total: number, next) => {
    return total + (+next.value)
   }, 0);
-  let progress = totalExpenses / budget;
+
+  let progress = totalExpenses / budget *100;
+  console.log(progress)
   let bgcolor = "blue";
-  let panelStyle = progress < 1 ? "panel--main" : "panel--main danger";
-  if (progress > 0.8) {
+  let panelStyle = progress < 100 ? "panel--main" : "panel--main danger";
+  if (progress > 80) {
     bgcolor = "red";
-  } else if (progress >= 0.4) {
+  } else if (progress >= 40) {
     bgcolor = "green";
   }
 
@@ -30,18 +32,18 @@ const handleViewExpenseModal = () => {
       <div className="panel--head">
         <h4>{name}</h4>
         <div>
-          <span className="panel--expenses">{totalExpenses}</span>/
-          <span className="panel--budget">{budget}</span>
+          <span className="panel--expenses">{+totalExpenses}</span>/
+          <span className="panel--budget">{+budget}</span>
         </div>
       </div>
       <ProgressBar
         bgcolor={bgcolor}
-        progress={Math.round(progress * 100)}
-        height={30}
+        progress={Math.round(progress)}
+        height={17}
       />
       <div className="panel--btns">
-        <Button name="Add Expense" className="btn inverted" onClick={ handleAddExpenseModal} />
-        <Button name="view Expenses" className="btn muted" onClick={handleViewExpenseModal}/>
+        <Button name="Add Expense" className="btn " onClick={ handleAddExpenseModal} />
+        <Button name="view Expenses" className="btn inverted" onClick={handleViewExpenseModal}/>
       </div>
     </div>
     )
@@ -50,7 +52,7 @@ const handleViewExpenseModal = () => {
     <>
       <PanelMain />
       
-      {modalsState.addExpenseModal && <AddExpenseModal ModalName={name} id={id} handleClose={handleAddExpenseModal} />}
+      {modalsState.addExpenseModal && <AddExpenseModal id={id} handleClose={handleAddExpenseModal} />}
       
       {modalsState.showExpensesModal && <ViewExpensesModal ModalName={name} id={id} handleClose={handleViewExpenseModal}/>}
     </>
