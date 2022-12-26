@@ -10,6 +10,7 @@ const [modalsState, setModalsState] = useState({addExpenseModal:false, showExpen
   }, 0);
 
   let progress = totalExpenses / budget *100;
+  console.log(progress)
   let bgcolor = "blue";
   let panelStyle = progress < 100 ? "panel--main" : "panel--main danger";
   if (progress > 80) {
@@ -38,11 +39,11 @@ const handleViewExpenseModal = () => {
       <ProgressBar
         bgcolor={bgcolor}
         progress={Math.round(progress)}
-        height={30}
+        height={17}
       />
       <div className="panel--btns">
-        <Button name="Add Expense" className="btn inverted" onClick={ handleAddExpenseModal} />
-        <Button name="view Expenses" className="btn muted" onClick={handleViewExpenseModal}/>
+        <Button name="Add Expense" className="btn " onClick={ handleAddExpenseModal} />
+        <Button name="view Expenses" className="btn inverted" onClick={handleViewExpenseModal}/>
       </div>
     </div>
     )

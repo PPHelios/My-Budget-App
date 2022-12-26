@@ -9,8 +9,8 @@
 //     budget: 100,
 //   },
 // ];
-let budgetId = 1;
-let expenseId = 3;
+let budgetId = 3;
+let expenseId = 30;
 export const BudgetReducer = (budgets, action) => {
   switch (action.type) {
     case "addExpense": {

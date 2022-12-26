@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { parseISO, isSameMonth } from "date-fns";
+import { isSameYear, isSameMonth } from "date-fns";
 import { BudgetReducer } from "./BudgetReducer";
 const date = Date.now();
 const initialState = [
@@ -19,10 +19,10 @@ const initialState = [
         name: "Toys",
         value: 10,
         description: "buy toys",
-        date: "2022-11-21",
+        date: "2022-12-5",
       },
     ],
-    budget: 100,
+    budget: 600,
     date,
   },
   {
@@ -34,28 +34,28 @@ const initialState = [
         name: "mac",
         value: 80,
         description: "buy food",
-        date: "2022-12-2",
+        date: "2022-10-2",
       },
       {
         id: 1,
         name: "buffalo",
         value: 40,
         description: "buy food",
-        date: "2022-12-15",
+        date: "2022-11-3",
       },
       {
         id: 2,
         name: "pizza",
         value: 90,
         description: "buy food",
-        date: "2022-10-5",
+        date: "2022-11-8",
       },
       {
         id: 3,
         name: "waffle",
         value: 60,
         description: "buy food",
-        date: "2022-11-15",
+        date: "2022-12-15",
       },
       {
         id: 4,
@@ -92,31 +92,63 @@ const initialState = [
         name: "cc",
         value: 90,
         description: "buy food",
-        date: "2022-12-15",
+        date: "2022-12-16",
       },
       {
         id: 9,
         name: "cc",
         value: 90,
         description: "buy food",
-        date: "2022-12-15",
+        date: "2022-12-17",
       },
       {
         id: 10,
         name: "cc",
         value: 90,
         description: "buy food",
-        date: "2022-12-15",
+        date: "2022-12-18",
       },
       {
         id: 11,
         name: "cc",
         value: 90,
         description: "buy food",
-        date: "2022-12-15",
+        date: "2022-12-20",
       }
+
+
+      ,
+      {
+        id: 12,
+        name: "cc",
+        value: 90,
+        description: "buy food",
+        date: "2022-12-22",
+      },
+      {
+        id: 13,
+        name: "cc",
+        value: 90,
+        description: "buy food",
+        date: "2022-12-23",
+      },
+      {
+        id: 14,
+        name: "cc",
+        value: 90,
+        description: "buy food",
+        date: "2022-12-24",
+      },
+      {
+        id: 15,
+        name: "cc",
+        value: 90,
+        description: "buy food",
+        date: "2022-12-24",
+      },
+      
     ],
-    budget: 900,
+    budget: 2000,
   },
 ];
 export const BudgetContext = createContext(null);
@@ -148,11 +180,13 @@ export const BudgetContextProvider = ({ children }) => {
       .map((b) => b.expenses.reduce((total, next) => total + next.value, 0))
       .reduce((total, next) => total + +next, 0);
   };
+
   const totalBudgetChartData = () =>
     budgets.reduce((total, next) => {
       total.push({ id: next.name, value: +next.budget });
       return total;
     }, []);
+
   const totalExpensesChartData = () => {
     return budgets.map((budget) => {
       const totalExpenses = budget.expenses.reduce(
@@ -162,32 +196,70 @@ export const BudgetContextProvider = ({ children }) => {
       return { id: budget.name, value: totalExpenses };
     });
   };
-  const expensesChartData = (budgetId, startDate) => {
+
+  const expensesMonthChartData = (budgetId, startDate) => {
     const budget = findBudgetById(budgetId);
-    const startDateIso = parseISO(startDate);
-    console.log(budget);
+    //const startDateIso = parseISO(startDate);
+    // console.log(budget);
     const filteredExpenses = budget.expenses.filter((e) => {
       // const timeStampStartDate = new Date(startDate).getTime();
       const expenseDate = new Date(e.date);
-      console.log(e.date);
-      console.log(expenseDate);
+      // console.log(e.date);
+      // console.log(expenseDate);
       // console.log(new Date(startDate).getTime());
       // console.log(e.date > timeStampStartDate);
-      return isSameMonth(expenseDate, startDateIso);
+      return isSameMonth(expenseDate, startDate);
     });
-    console.log("filteredExpenses " + JSON.stringify(filteredExpenses));
+    // console.log("filteredExpenses " + JSON.stringify(filteredExpenses));
+
+    // console.log("expensesArray" +JSON.stringify(expensesArray) );
+   
+
+
+    
+    return filteredExpenses ;
+  };
+
+  const groupedMonthChartExpenses=(filteredExpenses)=>{
     const expensesArray = filteredExpenses.map((expense) => {
       const date = new Date(expense.date).getDate();
      //const date=Math.floor(Math.random() * 30)
       return { id: date, value: expense.value };
     });
-    console.log("expensesArray" +JSON.stringify(expensesArray) );
-   const final=  groupDates(expensesArray)
+    const final=  groupDates(expensesArray)
 
-
-    
     return final ;
+  }
+
+  const expensesYearChartData = (budgetId, startDate) => {
+    const budget = findBudgetById(budgetId);
+    //const startDateIso = parseISO(startDate);
+    // console.log(budget);
+    const filteredExpenses = budget.expenses.filter((e) => {
+      // const timeStampStartDate = new Date(startDate).getTime();
+      const expenseDate = new Date(e.date);
+      // console.log(e.date);
+      // console.log(expenseDate);
+      // console.log(new Date(startDate).getTime());
+      // console.log(e.date > timeStampStartDate);
+      return isSameYear(expenseDate, startDate) 
+    });
+    // console.log("filteredExpenses " + JSON.stringify(filteredExpenses));
+    
+    // console.log("expensesArray" +JSON.stringify(expensesArray) );
+    return filteredExpenses ;
   };
+
+  const groupedYearChartExpenses=(filteredExpenses)=>{
+    const expensesArray = filteredExpenses.map((expense) => {
+      const date = new Date(expense.date).getMonth() + 1;
+     //const date=Math.floor(Math.random() * 30)
+      return { id: date, value: expense.value };
+    });
+    const final=  groupDates(expensesArray)
+
+    return final ;
+  }
 
   const value = {
     budgets,
@@ -196,9 +268,12 @@ export const BudgetContextProvider = ({ children }) => {
     findBudgetById,
     totalBudgets,
     totalExpenses,
-    expensesChartData,
+    expensesMonthChartData,
     totalBudgetChartData,
     totalExpensesChartData,
+    expensesYearChartData,
+    groupedMonthChartExpenses,
+    groupedYearChartExpenses
   };
 
   return (
@@ -210,7 +285,7 @@ export const BudgetContextProvider = ({ children }) => {
 
 
 const groupDates = (arr)=> {
-  console.log(arr)
+  // console.log(arr)
   var resMap = new Map();
   var result = [];
   arr.map((x) => {
@@ -226,6 +301,6 @@ const groupDates = (arr)=> {
       })
   })
   
-  console.log(result);
+  // console.log(result);
   return result
   }

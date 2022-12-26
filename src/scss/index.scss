@@ -8,9 +8,13 @@
 @import "../components/PanelsWindow/panelsWindow.scss";
 @import "../components/ChartsPanel/ChartsPanel.scss";
 @import "../components/charts/expensesChart.scss";
-@media only screen and (max-width: 700px) {
+
+
+
+
+  @media only screen and (max-width: 710px) {
   body {
-    font-size: 12px;
+    font-size: 9px;
   }
   .chartsPanel--totals {
     flex-direction: column;

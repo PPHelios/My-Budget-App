@@ -27,8 +27,10 @@ export const MainAppWindow = () => {
   return (
     <>
       <MainBar scrollToNewPanel={scrollToNewPanel} />
+      <div className="main-windows">
       <ChartsPanel />
       <PanelsWindow ref={panelsRef} />
+      </div>
     </>
   );
 };

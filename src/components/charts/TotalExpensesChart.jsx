@@ -44,7 +44,7 @@ export const TotalExpensesChart = () => {
   return (
     <ResponsivePie
       data={expenses}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}

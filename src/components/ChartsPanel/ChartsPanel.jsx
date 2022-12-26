@@ -15,7 +15,7 @@ export const ChartsPanel = () => {
     bgcolor = "green";
   }
 
-  return (
+  return (<div className="chartsPanel--container">
     <div className="chartsPanel--body">
       <div className="chartsPanel--totals">
         <div className="chartsPanel--totals-budgets">
@@ -30,6 +30,7 @@ export const ChartsPanel = () => {
       <div className="chartsPanel--progressbar">
         <ProgressBar progress={progress} bgcolor={bgcolor} />
       </div>
+    </div>
     </div>
   );
 };

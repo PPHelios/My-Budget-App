@@ -1,10 +1,14 @@
-import { useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
+import DatePicker from "react-datepicker"
+import { startOfMonth, startOfYear } from "date-fns";
 import { useBudgetsContext } from "../../context/BudgetContext";
-import { ExpensesChart } from "../charts/ExpensesChart";
-import { TotalBudgetChart } from "../charts/TotalBudgetChart";
+import { ExpensesMonthChart } from "../charts/ExpensesMonthChart";
+import { ExpensesYearChart } from "../charts/ExpensesYearChart";
 export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
-  const { dispatch, findBudgetById } = useBudgetsContext();
-
+  const { dispatch,expensesMonthChartData, expensesYearChartData  } = useBudgetsContext();
+  const [monthView, setMonthView] = useState(true);
+  const [startDate, setStartDate] = useState(new Date());
+   console.log(startDate);
   const handleDeleteExpense = (expenseId) => {
     dispatch({
       type: "deleteExpense",
@@ -30,25 +34,31 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
   }, [closeOnEscapeKeyDown]);
 
   const ExpensesList = () => {
-    const expenses = findBudgetById(id).expenses;
+    const expenses = monthView?expensesMonthChartData(id, startDate):expensesYearChartData(id, startDate);
     return (
-      <ul>
+   <>
         {expenses.map((x) => {
-          ("datetime-local");
+        
+         let date = x.date;
+         if (typeof date !== 'string'){
+          console.log( date)
+          date = monthObjectToString(x.date)
+         // console.log(date)
+         }
           return (
-            <li key={x.id}>
-              <span> {x.name}</span>
-              <span> {x.value}$ </span>
-              <span> {x.date}</span>
-              <span> {x.description}</span>
+            <tr key={x.id}>
+              <td> {x.name}</td>
+              <td> {x.value}$ </td>
+              <td> {date}</td>
+              <td> {x.description}</td>
+              <td>
               <button onClick={() => handleDeleteExpense(x.id)}>
-                {" "}
                 &#10005;
-              </button>
-            </li>
+              </button></td>
+            </tr>
           );
         })}
-      </ul>
+     </>
     );
   };
 
@@ -59,7 +69,7 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="addExpenseModal--head">
-          <div className="addExpenseModal--head-modalName"> {ModalName}</div>
+          <div className="addExpenseModal--head-modalName"> Your {ModalName} Expenses :</div>
           <div
             className="addExpenseModal--head-deleteBudget"
             onClick={handleDeleteBudget}
@@ -73,10 +83,59 @@ export const ViewExpensesModal = ({ id, ModalName, handleClose }) => {
             &#10005;
           </div>
         </div>
-        <b>Your Expenses :</b>
+        <div className="addExpenseModal--data">
+          <div className="addExpenseModal--data-list">
+          
+          <form className="picker" >
+      {monthView? <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      dateFormat="MM/yyyy"
+      showMonthYearPicker
+    />:<DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      showYearPicker
+      dateFormat="yyyy"
+    />}
+    <button type="button" id="picker-btn" onClick={()=>setMonthView(!monthView)}>{monthView? "Year View" :" Month view"}</button>
+      </form>
+            <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Date</th>
+                <th>Comment</th>
+                <th>Delete</th>
+              </tr> 
+              </thead>
+              <tbody>
         <ExpensesList />
-        <ExpensesChart id={id}/>
+        </tbody>
+        </table>
+        </div>
+        <div className="addExpenseModal--data-chart">
+        {monthView ? (
+          <ExpensesMonthChart id={id} startDate={startDate}/>
+        ) : (
+          <ExpensesYearChart id={id} startDate={startDate}/>
+        )}
+      </div>
+      </div>
       </div>
     </div>
   );
+};
+
+
+const monthObjectToString = (date) => {
+ 
+  const year = date.getFullYear();
+  let month = (date.getMonth() + 1).toString();
+  month.length === 1 ? (month += "0" + month) : (month = month);
+  let day = date.getDate().toString();
+  day.length === 1 ? (day = "0" + day) : (day = day);
+  const dateString = year + "-" + month + "-" + day;
+  return dateString;
 };
