@@ -9,21 +9,27 @@
 //     budget: 100,
 //   },
 // ];
-let budgetId = 1;
-let expenseId = 3;
+let budgetId = 3;
+let expenseId = 30;
 export const BudgetReducer = (budgets, action) => {
   switch (action.type) {
     case "addExpense": {
-      console.log("add");
       const { id, name, value, description } = action;
-      console.log(id, name, value, description);
       const updatedBudget = budgets.map((b) => {
         if (b.id === id) {
+          const date = new Date();
+          console.log(date);
           return {
             ...b,
             expenses: [
               ...b.expenses,
-              { id: expenseId++, name, value, description },
+              {
+                id: expenseId++,
+                name,
+                value: +value,
+                description,
+                date,
+              },
             ],
           };
         } else {

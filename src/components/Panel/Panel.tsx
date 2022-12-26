@@ -10,6 +10,7 @@ const [modalsState, setModalsState] = useState({addExpenseModal:false, showExpen
   }, 0);
 
   let progress = totalExpenses / budget *100;
+  console.log(progress)
   let bgcolor = "blue";
   let panelStyle = progress < 100 ? "panel--main" : "panel--main danger";
   if (progress > 80) {
@@ -31,18 +32,18 @@ const handleViewExpenseModal = () => {
       <div className="panel--head">
         <h4>{name}</h4>
         <div>
-          <span className="panel--expenses">{totalExpenses}</span>/
-          <span className="panel--budget">{budget}</span>
+          <span className="panel--expenses">{+totalExpenses}</span>/
+          <span className="panel--budget">{+budget}</span>
         </div>
       </div>
       <ProgressBar
         bgcolor={bgcolor}
         progress={Math.round(progress)}
-        height={30}
+        height={17}
       />
       <div className="panel--btns">
-        <Button name="Add Expense" className="btn inverted" onClick={ handleAddExpenseModal} />
-        <Button name="view Expenses" className="btn muted" onClick={handleViewExpenseModal}/>
+        <Button name="Add Expense" className="btn " onClick={ handleAddExpenseModal} />
+        <Button name="view Expenses" className="btn inverted" onClick={handleViewExpenseModal}/>
       </div>
     </div>
     )
@@ -51,7 +52,7 @@ const handleViewExpenseModal = () => {
     <>
       <PanelMain />
       
-      {modalsState.addExpenseModal && <AddExpenseModal ModalName={name} id={id} handleClose={handleAddExpenseModal} />}
+      {modalsState.addExpenseModal && <AddExpenseModal id={id} handleClose={handleAddExpenseModal} />}
       
       {modalsState.showExpensesModal && <ViewExpensesModal ModalName={name} id={id} handleClose={handleViewExpenseModal}/>}
     </>

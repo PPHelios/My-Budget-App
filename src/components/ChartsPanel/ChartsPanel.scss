@@ -1,19 +1,67 @@
+.chartsPanel--container{
+  width: 100%;
+  
 .chartsPanel--body {
-  margin-inline: 2rem;
-  padding: 1.5rem;
-  background-color: $color-gray-light;
-  box-shadow: 1px 2px 4px $color-primary-light;
+  width: 60%;
+  margin-inline: auto;
+  padding: 0.5rem;
+  background: #e0fbfc;
+background: linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
+background: -webkit-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
+background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
   .chartsPanel--totals {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+    gap: 1rem;
+   
+    text-align: center;
+    h2{
+      font-size: 1.2rem;
+    }
+
+    .chartsPanel--totals-budgets, .chartsPanel--totals-expenses {
+      height: 40vh;
+      width: 50%;
+      
+    }
   }
   .chartsPanel--progressbar {
     margin-top: 1rem;
     display: grid;
     margin-inline: auto;
-
     grid-template-columns: 1fr;
     place-items: center;
   }
 }
+@media only screen and (max-width: 710px) {
+  .chartsPanel--body{
+    width: 80%;
+
+    .chartsPanel--totals {
+     flex-wrap: wrap;
+      h2{
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 460px){
+  .chartsPanel--body{
+    width: 96%;
+    height: 72vh;
+   
+    .chartsPanel--totals {
+      height: max-content;
+flex-direction: column;
+flex-wrap: nowrap;
+.chartsPanel--totals-budgets, .chartsPanel--totals-expenses{
+  width: 100%;
+  height: 30vh;
+}
+    }
+  }
+}
+}
+

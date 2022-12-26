@@ -91,6 +91,7 @@ export const AddExpenseModal = ({ id, handleClose }) => {
             onChange={handleChange}
             placeholder="Enter Expense value..."
             min={0}
+            max={1e7}
             required
           />
           <label htmlFor="description">Description:</label>

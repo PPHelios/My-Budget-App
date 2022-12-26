@@ -14,7 +14,6 @@ export const MainAppWindow = () => {
     iterations: 1,
   };
   const scrollToNewPanel = () => {
-    console.log("click");
     panelsRef.current?.lastElementChild?.scrollIntoView({
       behavior: "smooth",
       block: "center",
@@ -28,8 +27,10 @@ export const MainAppWindow = () => {
   return (
     <>
       <MainBar scrollToNewPanel={scrollToNewPanel} />
+      <div className="main-windows">
       <ChartsPanel />
       <PanelsWindow ref={panelsRef} />
+      </div>
     </>
   );
 };

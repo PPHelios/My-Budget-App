@@ -1,4 +1,6 @@
 import { useBudgetsContext } from "../../context/BudgetContext";
+import { TotalBudgetChart } from "../charts/TotalBudgetChart";
+import { TotalExpensesChart } from "../charts/TotalExpensesChart";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 
 export const ChartsPanel = () => {
@@ -6,7 +8,6 @@ export const ChartsPanel = () => {
   const total = totalBudgets();
   const expenses = totalExpenses();
   const progress = Math.floor((expenses / total) * 100);
-  console.log(progress);
   let bgcolor = "blue";
   if (progress > 80) {
     bgcolor = "red";
@@ -14,16 +15,22 @@ export const ChartsPanel = () => {
     bgcolor = "green";
   }
 
-  return (
+  return (<div className="chartsPanel--container">
     <div className="chartsPanel--body">
       <div className="chartsPanel--totals">
-        <h2>Total Budget : {total}</h2>
-        <h2>Total Expenses : {expenses}</h2>
+        <div className="chartsPanel--totals-budgets">
+          <h2>Total Budget : {total}</h2>
+          <TotalBudgetChart />
+        </div>
+        <div className="chartsPanel--totals-expenses">
+          <h2>Total Expenses : {expenses}</h2>
+          <TotalExpensesChart />
+        </div>
       </div>
-
       <div className="chartsPanel--progressbar">
         <ProgressBar progress={progress} bgcolor={bgcolor} />
       </div>
+    </div>
     </div>
   );
 };
