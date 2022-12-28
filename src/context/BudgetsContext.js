@@ -154,8 +154,8 @@ const initialState = [
 
   },
   {
-    id: 0,
-    name: "Daily",
+    id: 3,
+    name: "Daily2",
     expenses: [
       {
         id: 0,
@@ -178,8 +178,8 @@ const initialState = [
       return this.expenses.reduce((total,next)=>total+next.value,0)}
   },
   {
-    id: 0,
-    name: "Daily",
+    id:4,
+    name: "Daily3",
     expenses: [
       {
         id: 0,
@@ -201,8 +201,8 @@ const initialState = [
       
       return this.expenses.reduce((total,next)=>total+next.value,0)}
   },{
-    id: 0,
-    name: "Daily",
+    id: 5,
+    name: "Daily4",
     expenses: [
       {
         id: 0,
@@ -224,8 +224,8 @@ const initialState = [
       
       return this.expenses.reduce((total,next)=>total+next.value,0)}
   },{
-    id: 0,
-    name: "Daily",
+    id: 6,
+    name: "Daily5",
     expenses: [
       {
         id: 0,
@@ -247,8 +247,8 @@ const initialState = [
       
       return this.expenses.reduce((total,next)=>total+next.value,0)}
   },{
-    id: 0,
-    name: "Daily",
+    id: 7,
+    name: "Daily6",
     expenses: [
       {
         id: 0,
