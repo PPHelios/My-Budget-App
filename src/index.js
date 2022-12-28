@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./scss/index.scss";
+import CssBaseline from '@mui/material/CssBaseline';
+import "./index.css"
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BudgetContextProvider } from "./context/BudgetContext";
-
+import { BudgetsContextProvider } from "./context/BudgetsContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BudgetContextProvider>
-      <App />
-    </BudgetContextProvider>
+    <CssBaseline />
+    <BudgetsContextProvider>
+      <App /></BudgetsContextProvider>
   </React.StrictMode>
 );
 
