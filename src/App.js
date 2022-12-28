@@ -1,7 +1,11 @@
-import { MainAppWindow } from "./components/MainAppWindow/MainAppWindow";
+
+import './App.css';
+import { ChartsPanel } from './components/ChartsPanel';
 
 function App() {
-  return <MainAppWindow />;
+  return (
+<ChartsPanel/>
+  );
 }
 
 export default App;

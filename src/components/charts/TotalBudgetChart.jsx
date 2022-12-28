@@ -1,15 +1,18 @@
 import { ResponsivePie } from "@nivo/pie";
-import { useBudgetsContext } from "../../context/BudgetContext";
-
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import {useBudgetsContext} from "../../context/BudgetsContext"
 
 export const TotalBudgetChart = () => {
-  const { totalBudgetChartData } = useBudgetsContext();
+  const { totalBudget, totalBudgetChartData } = useBudgetsContext();
   const budgets = totalBudgetChartData();
+const total= totalBudget()
+// `Total Budgets: ${total}`
+  return(
+    
 
-  return (
-    <ResponsivePie
+<ResponsivePie
       data={budgets}
-      margin={{ top: 30, right: 30, bottom: 30, left: 30 }}
+      margin={{ top: 30, right: 10, bottom: 30, left: 10 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
@@ -19,11 +22,11 @@ export const TotalBudgetChart = () => {
         from: "color",
         modifiers: [["darker", 0.2]],
       }}
-      arcLinkLabelsSkipAngle={10}
+      arcLinkLabelsSkipAngle={20}
       arcLinkLabelsTextColor="#333333"
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
-      arcLabelsSkipAngle={10}
+      arcLabelsSkipAngle={180}
       arcLabelsTextColor={{
         from: "color",
         modifiers: [["darker", 2]],
@@ -31,5 +34,6 @@ export const TotalBudgetChart = () => {
       
       
     />
-  );
-};
+    
+  )
+}
