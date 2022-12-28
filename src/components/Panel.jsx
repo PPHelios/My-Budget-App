@@ -1,6 +1,6 @@
 import {Card, Typography, Box, CardContent, Container, Button} from '@mui/material'
 import { useState } from 'react';
-// import { BudgetDetailsModal } from './BudgetDetailsModal';
+import { BudgetDetailsModal } from './BudgetDetailsModal';
 import { ProgressBar } from "./ProgressBar"
 
 export const Panel = ({budget}) => {
@@ -30,7 +30,7 @@ return(
     Details
   </Button>
  </Card>
-{/* {detailsOn && <BudgetDetailsModal budget={budget} />} */}
+{detailsOn && <BudgetDetailsModal budget={budget} />}
  </>
 )
 

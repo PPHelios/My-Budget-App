@@ -1,21 +1,24 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams, Modal, Button, Typography } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridValueGetterParams,  } from '@mui/x-data-grid';
+// Modal, Button, Typography
+import { Modal, Button, Typography  } from "@mui/material";
 import { useState } from 'react';
 
 export const BudgetDetailsModal = ({budget}) => {
 
   const style = {
     position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
+    top: 10,
+    left: 10,
+   
+    width: 800,
+    height:"80vh",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
   };
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const columns = [
@@ -23,14 +26,14 @@ export const BudgetDetailsModal = ({budget}) => {
     {
       field: 'name',
       headerName: 'Name',
-      width: 130,
+      width: 80,
       editable: true,
     },
     {
       field: 'value',
       headerName: 'Value',
       type: 'number',
-      width: 100,
+      width: 60,
       editable: true,
     },
     {
@@ -52,6 +55,7 @@ export const BudgetDetailsModal = ({budget}) => {
   name:b.name,
   value:b.value,
   description:b.description,
+  date:b.date
 }))
 
 
@@ -65,7 +69,7 @@ return(
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <Box sx={{ height: 400, width: '100%' }}>
+        <Box sx={{ height: '100%', width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -76,9 +80,7 @@ return(
         experimentalFeatures={{ newEditingApi: true }}
       />
     </Box>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          
         </Box>
       </Modal>
     </div>
