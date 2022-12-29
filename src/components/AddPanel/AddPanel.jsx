@@ -4,7 +4,7 @@ export const AddPanel = () => {
 
   return(
     <div className="addPanel--container">
-      <h4>add me</h4>
+      <h4>add me 6000</h4>
       <div className="addPanel--btns">
       
         <button name="Add Expense" className="btn "  >Add Budget</button>
