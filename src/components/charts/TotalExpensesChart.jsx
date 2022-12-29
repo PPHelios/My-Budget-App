@@ -2,7 +2,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { Card, CardHeader, CardBody, CardFooter,Heading  } from '@chakra-ui/react'
 import {useBudgetsContext} from "../../context/BudgetsContext"
 
-export const TotalBudgetChart = () => {
+export const TotalExpensesChart = () => {
   const { totalBudget, totalBudgetChartData } = useBudgetsContext();
   const budgets = totalBudgetChartData();
 const total= totalBudget()
@@ -10,7 +10,7 @@ const total= totalBudget()
   return(
     <Card p="2" h="100%" w="100%">
   <Heading  size='md' >
-     React & Next
+    (3xl) In love with React & Next gfgfgn hfhgjh
   </Heading>
 
 <ResponsivePie

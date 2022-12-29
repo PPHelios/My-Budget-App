@@ -1,14 +1,24 @@
-import { Stack, Spacer, Box, Button } from '@chakra-ui/react'
+import { Stack, Spacer, Box, Button, Heading,Card } from '@chakra-ui/react'
 export const AddPanel = () => {
 
-  return(
-    <Stack h="100%" direction={['row','row','column', ]} spacing='24px' justify="space-between" align="center" bg='yellow.100'>
-   <Button colorScheme='teal' size='sm'>
+  return(    
+  <Stack h="100%" w="100%" direction={['row','row','column', ]} spacing='24px' justify="space-between" align="center" bg='yellow.100'>
+
+    <Card  h="100%" w="100%">
+  <Heading  p="2" size='md' noOfLines={1}>
+    (3xl) In love with React & Next
+    </Heading>
+      
+      <Stack h="100%" p="2" direction={['row','row','column', ]} spacing='24px' justify="space-between" align="center" >
+        <Button colorScheme='teal' size='sm'>
     Button
   </Button>
   <Button colorScheme='teal' size='sm'>
     Button
   </Button>
+   
+</Stack>
+</Card>      
 </Stack>
 
   )
