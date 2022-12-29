@@ -1,9 +1,9 @@
 .chartsPanel--container{
   width: 100%;
-  
+  height: min-content;
 .chartsPanel--body {
   width: 90%;
-  height: 90vh;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,20 +57,24 @@ background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
 @media only screen and (max-width: 710px) {
   .chartsPanel--body{
     width: 90%;
-
+    height: 40vh;
     .chartsPanel--totals {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 20vh 10vh;
+      grid-auto-rows: 12rem;
       h2{
         font-size: 0.9rem;
       }
       .chartsPanel--totals-add-inner{
+        grid-column: span 2;
         order:3;
         width:40vw;
+        height: fit-content;
         
       }
       .chartsPanel--totals-budgets, .chartsPanel--totals-expenses {
         width:40vw;
-        
+        height: 20vh;
        
         
       }
@@ -78,23 +82,28 @@ background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
   }
 }
 @media only screen and (max-width: 460px){
+  .chartsPanel--container{
+  
   .chartsPanel--body{
     width: 96%;
-    
+
     
    
     .chartsPanel--totals {
       grid-template-columns: 1fr;
+      height: 90vh;
+      
 .chartsPanel--totals-budgets, .chartsPanel--totals-expenses{
   width:90vw;
-  height: 30vh;
+  height: 20vh;
 }
 .chartsPanel--totals-add-inner{
  height: fit-content;
+ grid-column: 1;
   
 }
     }
   }
 }
-}
+}}
 
