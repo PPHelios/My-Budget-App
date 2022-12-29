@@ -2,6 +2,7 @@ import { useBudgetsContext } from "../../context/BudgetContext";
 import { TotalBudgetChart } from "../charts/TotalBudgetChart";
 import { TotalExpensesChart } from "../charts/TotalExpensesChart";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import {AddPanel} from "../AddPanel/AddPanel"
 
 export const ChartsPanel = () => {
   const { totalBudgets, totalExpenses } = useBudgetsContext();
@@ -22,6 +23,11 @@ export const ChartsPanel = () => {
           <h2>Total Budget : {total}</h2>
           <TotalBudgetChart />
         </div>
+   
+        <div className="chartsPanel--totals-add-inner">
+           <AddPanel />
+       
+       </div>
         <div className="chartsPanel--totals-expenses">
           <h2>Total Expenses : {expenses}</h2>
           <TotalExpensesChart />

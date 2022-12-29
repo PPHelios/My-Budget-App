@@ -2,7 +2,12 @@
   width: 100%;
   
 .chartsPanel--body {
-  width: 60%;
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   margin-inline: auto;
   padding: 0.5rem;
   background: #e0fbfc;
@@ -10,10 +15,9 @@ background: linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
 background: -webkit-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
 background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
   .chartsPanel--totals {
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
     gap: 1rem;
    
     text-align: center;
@@ -22,12 +26,27 @@ background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
     }
 
     .chartsPanel--totals-budgets, .chartsPanel--totals-expenses {
+      width:30vw;
       height: 40vh;
-      width: 50%;
+      
+      background-color: aqua;
       
     }
+  
+     
+      .chartsPanel--totals-add-inner{ 
+        display:flex;
+      flex-direction: column;
+      width: 20vw;
+      height: 40vh;
+      
+      background-color: #75bce6;
+    }
+    
+    
   }
   .chartsPanel--progressbar {
+    width: 100%;
     margin-top: 1rem;
     display: grid;
     margin-inline: auto;
@@ -37,12 +56,23 @@ background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
 }
 @media only screen and (max-width: 710px) {
   .chartsPanel--body{
-    width: 80%;
+    width: 90%;
 
     .chartsPanel--totals {
-     flex-wrap: wrap;
+      grid-template-columns: repeat(2, 1fr);
       h2{
         font-size: 0.9rem;
+      }
+      .chartsPanel--totals-add-inner{
+        order:3;
+        width:40vw;
+        
+      }
+      .chartsPanel--totals-budgets, .chartsPanel--totals-expenses {
+        width:40vw;
+        
+       
+        
       }
     }
   }
@@ -50,15 +80,18 @@ background: -moz-linear-gradient(180deg,#e0fbfc 0%, #98c1d9 40%, #75bce6 90%);
 @media only screen and (max-width: 460px){
   .chartsPanel--body{
     width: 96%;
-    height: 72vh;
+    
+    
    
     .chartsPanel--totals {
-      height: max-content;
-flex-direction: column;
-flex-wrap: nowrap;
+      grid-template-columns: 1fr;
 .chartsPanel--totals-budgets, .chartsPanel--totals-expenses{
-  width: 100%;
+  width:90vw;
   height: 30vh;
+}
+.chartsPanel--totals-add-inner{
+ height: fit-content;
+  
 }
     }
   }
